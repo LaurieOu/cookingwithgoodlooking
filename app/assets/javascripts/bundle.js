@@ -55,7 +55,7 @@
 	var browserHistory = __webpack_require__(172).browserHistory;
 	var HomePage = __webpack_require__(235);
 	var RecipeIndex = __webpack_require__(236);
-	var RecipeShow = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/recipe_show.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var RecipeShow = __webpack_require__(260);
 	
 	var routes = React.createElement(
 	  Router,
@@ -27108,11 +27108,7 @@
 	    return React.createElement(
 	      "div",
 	      null,
-	      React.createElement(
-	        "nav",
-	        { className: "navbar navbar-inverse" },
-	        "HIIII"
-	      ),
+	      React.createElement("nav", { className: "navbar navbar-inverse" }),
 	      this.props.children
 	    );
 	  }
@@ -27194,15 +27190,6 @@
 	        ApiActions.receiveAllRecipes(recipes);
 	      }
 	    });
-	  },
-	  fetchSingleRecipe: function fetchSingleRecipe(id) {
-	    $.ajax({
-	      url: '/recipes' + id,
-	      type: 'GET',
-	      success: function success(recipe) {
-	        ApiActions.receiveSingleRecipe(recipe);
-	      }
-	    });
 	  }
 	};
 	
@@ -27221,12 +27208,6 @@
 	    AppDispatcher.dispatch({
 	      actionType: 'RECIPES_RECEIVED',
 	      recipes: recipes
-	    });
-	  },
-	  receiveSingleRecipe: function receiveSingleRecipe(recipeId) {
-	    AppDispatcher.dispatch({
-	      actionType: 'RECIPE_RECEIVED',
-	      recipe: recipe
 	    });
 	  }
 	};
@@ -27581,10 +27562,6 @@
 	  switch (payload.actionType) {
 	    case 'RECIPES_RECEIVED':
 	      resetRecipes(payload.recipes);
-	      RecipeStore.__emitChange();
-	      break;
-	    case 'RECIPE_RECEIVED':
-	      _recipes[payload.recipe.id] = payload.recipe;
 	      RecipeStore.__emitChange();
 	      break;
 	  }
@@ -33946,6 +33923,76 @@
 	
 	module.exports = FluxMixinLegacy;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 259 */,
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var RecipeStore = __webpack_require__(243);
+	
+	var RecipeShow = React.createClass({
+	  displayName: 'RecipeShow',
+	
+	  getInitialState: function getInitialState() {
+	    return { currentRecipe: RecipeStore.find(parseInt(this.props.params.id)) };
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      this.state.currentRecipe.pictures.map(function (picture, idx) {
+	        return React.createElement(
+	          'ul',
+	          { key: idx },
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement('img', { height: '300', src: picture })
+	          )
+	        );
+	      }),
+	      React.createElement(
+	        'li',
+	        null,
+	        this.state.currentRecipe.name
+	      ),
+	      React.createElement(
+	        'li',
+	        null,
+	        this.state.currentRecipe.time
+	      ),
+	      React.createElement(
+	        'ol',
+	        null,
+	        this.state.currentRecipe.ingredients.map(function (ingredient, idx) {
+	          return React.createElement(
+	            'li',
+	            { key: idx },
+	            ingredient
+	          );
+	        })
+	      ),
+	      React.createElement(
+	        'ol',
+	        null,
+	        this.state.currentRecipe.steps.map(function (step, idx) {
+	          return React.createElement(
+	            'li',
+	            { key: idx },
+	            step
+	          );
+	        })
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = RecipeShow;
 
 /***/ }
 /******/ ]);

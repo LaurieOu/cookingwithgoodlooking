@@ -9,15 +9,6 @@ const apiUtil = {
         ApiActions.receiveAllRecipes(recipes);
       }
     });
-  },
-  fetchSingleRecipe: function(id) {
-    $.ajax({
-      url: '/recipes' + id,
-      type: 'GET',
-      success: function(recipe) {
-        ApiActions.receiveSingleRecipe(recipe);
-      }
-    })
   }
 };
 

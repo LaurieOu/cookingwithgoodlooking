@@ -25,10 +25,6 @@ RecipeStore.__onDispatch = function(payload) {
       resetRecipes(payload.recipes);
       RecipeStore.__emitChange();
       break;
-    case 'RECIPE_RECEIVED':
-      _recipes[payload.recipe.id] = payload.recipe
-      RecipeStore.__emitChange();
-      break;
   }
 };
 

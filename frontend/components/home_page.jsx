@@ -4,7 +4,7 @@ const HomePage = React.createClass ({
   render(){
     return(
       <div>
-        <nav className="navbar navbar-inverse">HIIII</nav>
+        <nav className="navbar navbar-inverse"></nav>
         {this.props.children}
       </div>
     );

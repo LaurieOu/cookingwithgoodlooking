@@ -1,5 +1,5 @@
 const React = require('react');
-const RecipeStore = require('../../stores/recipes.js');
+const RecipeStore = require('../stores/recipes.js');
 
 
 const RecipeShow = React.createClass({
@@ -8,28 +8,30 @@ const RecipeShow = React.createClass({
   },
   render: function(){
     return (
-      {this.state.currentRecipe.pictures.map(function(picture) {
-        return (
-          <ul>
-            <li><img height="300" src={picture}/></li>
-          </ul>
-        )
-      })}
+      <div>
+        {this.state.currentRecipe.pictures.map(function(picture, idx) {
+          return (
+            <ul key={idx}>
+              <li><img height="300" src={picture}/></li>
+            </ul>
+          )
+        })}
 
-      <li>{this.state.currentRecipe.name}</li>
-      <li>{this.state.currentRecipe.time}</li>
+        <li>{this.state.currentRecipe.name}</li>
+        <li>{this.state.currentRecipe.time}</li>
 
-      <ol>
-      {this.state.currentRecipe.ingredients.map(function(ingredient) {
-        return( <li>{ingredient}</li> )
-      })}
-      </ol>
+        <ol>
+        {this.state.currentRecipe.ingredients.map(function(ingredient, idx) {
+          return( <li key={idx}>{ingredient}</li> )
+        })}
+        </ol>
 
-      <ol>
-      {this.state.currentRecipe.steps.map(function(step){
-        return ( <li>{step}</li> )
-      })}
-      </ol>
+        <ol>
+        {this.state.currentRecipe.steps.map(function(step, idx){
+          return ( <li key={idx}>{step}</li> )
+        })}
+        </ol>
+      </div>
     )
   }
 

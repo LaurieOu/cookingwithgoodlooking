@@ -6,12 +6,6 @@ const ApiActions = {
       actionType: 'RECIPES_RECEIVED',
       recipes: recipes
     });
-  },
-  receiveSingleRecipe: function(recipeId) {
-    AppDispatcher.dispatch({
-      actionType: 'RECIPE_RECEIVED',
-      recipe: recipe
-    })
   }
 };
 
