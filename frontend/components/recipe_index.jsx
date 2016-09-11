@@ -1,7 +1,8 @@
 const React = require('react');
 const ApiUtil = require('../util/api_util.js');
 const RecipeStore = require('../stores/recipes.js');
-const RecipeIndexItem = require('./recipe_index_item.jsx');
+import { Link } from 'react-router';
+
 
 const Recipes = React.createClass({
   getInitialState: function() {
@@ -24,7 +25,11 @@ const Recipes = React.createClass({
         <div>
           <ul>
             {Object.keys(this.state.recipes).map(function(recipeId) {
-              return < RecipeIndexItem key={recipeId} recipe={that.state.recipes[recipeId]}/>;
+              return (
+                <Link to={'/recipes/' + recipeId} key={recipeId}>
+                    <p>{that.state.recipes[recipeId].name}</p>
+                </Link>
+              )
             })}
           </ul>
         </div>

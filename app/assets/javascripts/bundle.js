@@ -64,7 +64,7 @@
 	    Route,
 	    { path: '/', component: HomePage },
 	    React.createElement(IndexRoute, { component: RecipeIndex }),
-	    React.createElement(Route, { path: 'recipes/:id', component: RecipeShow })
+	    React.createElement(Route, { path: '/recipes/:id', component: RecipeShow })
 	  )
 	);
 	
@@ -27126,10 +27126,12 @@
 
 	'use strict';
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	var React = __webpack_require__(1);
 	var ApiUtil = __webpack_require__(237);
 	var RecipeStore = __webpack_require__(243);
-	var RecipeIndexItem = __webpack_require__(259);
+	
 	
 	var Recipes = React.createClass({
 	  displayName: 'Recipes',
@@ -27157,7 +27159,15 @@
 	        'ul',
 	        null,
 	        Object.keys(this.state.recipes).map(function (recipeId) {
-	          return React.createElement(RecipeIndexItem, { key: recipeId, recipe: that.state.recipes[recipeId] });
+	          return React.createElement(
+	            _reactRouter.Link,
+	            { to: '/recipes/' + recipeId, key: recipeId },
+	            React.createElement(
+	              'p',
+	              null,
+	              that.state.recipes[recipeId].name
+	            )
+	          );
 	        })
 	      )
 	    );
@@ -33936,36 +33946,6 @@
 	
 	module.exports = FluxMixinLegacy;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 259 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _reactRouter = __webpack_require__(172);
-	
-	var React = __webpack_require__(1);
-	
-	
-	var RecipeIndexItem = React.createClass({
-	  displayName: 'RecipeIndexItem',
-	
-	  render: function render() {
-	
-	    return React.createElement(
-	      _reactRouter.Link,
-	      { to: '/recipes/' + this.props.recipe.id },
-	      React.createElement(
-	        'p',
-	        null,
-	        this.props.recipe.name
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = RecipeIndexItem;
 
 /***/ }
 /******/ ]);

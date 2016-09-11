@@ -14,7 +14,7 @@ const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={ HomePage }>
       <IndexRoute component={RecipeIndex} />
-      <Route path='recipes/:id' component={RecipeShow} />
+      <Route path="/recipes/:id" component={ RecipeShow } />
     </Route>
   </Router>
 );

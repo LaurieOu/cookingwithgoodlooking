@@ -8,7 +8,7 @@ const RecipeShow = React.createClass({
   },
   render: function(){
     return (
-      {currentRecipe.pictures.map(function(picture) {
+      {this.state.currentRecipe.pictures.map(function(picture) {
         return (
           <ul>
             <li><img height="300" src={picture}/></li>
@@ -16,17 +16,17 @@ const RecipeShow = React.createClass({
         )
       })}
 
-      <li>{currentRecipe.name}</li>
-      <li>{currentRecipe.time}</li>
+      <li>{this.state.currentRecipe.name}</li>
+      <li>{this.state.currentRecipe.time}</li>
 
       <ol>
-      {currentRecipe.ingredients.map(function(ingredient) {
+      {this.state.currentRecipe.ingredients.map(function(ingredient) {
         return( <li>{ingredient}</li> )
       })}
       </ol>
 
       <ol>
-      {RecipeStore.currentREcipeId.steps.map(function(step){
+      {this.state.currentRecipe.steps.map(function(step){
         return ( <li>{step}</li> )
       })}
       </ol>
