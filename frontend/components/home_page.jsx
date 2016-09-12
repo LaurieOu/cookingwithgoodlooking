@@ -3,8 +3,8 @@ const React = require('react');
 const HomePage = React.createClass ({
   render(){
     return(
-      <div>
-        <nav className="navbar navbar-inverse"></nav>
+      <div className="mainBody">
+        <div className="homePageTitle">Recipes under 30 minutes</div>
         {this.props.children}
       </div>
     );

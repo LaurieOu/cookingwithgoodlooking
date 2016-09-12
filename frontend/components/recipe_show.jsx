@@ -8,29 +8,33 @@ const RecipeShow = React.createClass({
   },
   render: function(){
     return (
-      <div>
+      <div className="recipeShowContainer">
+        <li className="recipeHeader">{this.state.currentRecipe.name}</li>
+        <li className="recipeHeader">{this.state.currentRecipe.time}</li>
+
         {this.state.currentRecipe.pictures.map(function(picture, idx) {
           return (
             <ul key={idx}>
-              <li><img height="300" src={picture}/></li>
+              <li className="picture"><img height="300" src={picture}/></li>
             </ul>
           )
         })}
 
-        <li>{this.state.currentRecipe.name}</li>
-        <li>{this.state.currentRecipe.time}</li>
+        <div className="ingredientsAndStepsContainer">
+          <div className="labels">Ingredients:</div>
+          <ol>
+          {this.state.currentRecipe.ingredients.map(function(ingredient, idx) {
+            return( <li key={idx}>{ingredient}</li> )
+          })}
+          </ol>
 
-        <ol>
-        {this.state.currentRecipe.ingredients.map(function(ingredient, idx) {
-          return( <li key={idx}>{ingredient}</li> )
-        })}
-        </ol>
-
-        <ol>
-        {this.state.currentRecipe.steps.map(function(step, idx){
-          return ( <li key={idx}>{step}</li> )
-        })}
-        </ol>
+          <div className="labels">Steps:</div>
+          <ol>
+          {this.state.currentRecipe.steps.map(function(step, idx){
+            return ( <li key={idx}>{step}</li> )
+          })}
+          </ol>
+        </div>
       </div>
     )
   }

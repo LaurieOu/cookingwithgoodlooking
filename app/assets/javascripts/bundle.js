@@ -27107,8 +27107,12 @@
 	  render: function render() {
 	    return React.createElement(
 	      "div",
-	      null,
-	      React.createElement("nav", { className: "navbar navbar-inverse" }),
+	      { className: "mainBody" },
+	      React.createElement(
+	        "div",
+	        { className: "homePageTitle" },
+	        "Recipes under 30 minutes"
+	      ),
 	      this.props.children
 	    );
 	  }
@@ -27150,17 +27154,17 @@
 	
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'allRecipesContainer' },
 	      React.createElement(
-	        'ul',
+	        'ol',
 	        null,
 	        Object.keys(this.state.recipes).map(function (recipeId) {
 	          return React.createElement(
-	            _reactRouter.Link,
-	            { to: '/recipes/' + recipeId, key: recipeId },
+	            'li',
+	            null,
 	            React.createElement(
-	              'p',
-	              null,
+	              _reactRouter.Link,
+	              { to: '/recipes/' + recipeId, key: recipeId },
 	              that.state.recipes[recipeId].name
 	            )
 	          );
@@ -33943,49 +33947,63 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'recipeShowContainer' },
+	      React.createElement(
+	        'li',
+	        { className: 'recipeHeader' },
+	        this.state.currentRecipe.name
+	      ),
+	      React.createElement(
+	        'li',
+	        { className: 'recipeHeader' },
+	        this.state.currentRecipe.time
+	      ),
 	      this.state.currentRecipe.pictures.map(function (picture, idx) {
 	        return React.createElement(
 	          'ul',
 	          { key: idx },
 	          React.createElement(
 	            'li',
-	            null,
+	            { className: 'picture' },
 	            React.createElement('img', { height: '300', src: picture })
 	          )
 	        );
 	      }),
 	      React.createElement(
-	        'li',
-	        null,
-	        this.state.currentRecipe.name
-	      ),
-	      React.createElement(
-	        'li',
-	        null,
-	        this.state.currentRecipe.time
-	      ),
-	      React.createElement(
-	        'ol',
-	        null,
-	        this.state.currentRecipe.ingredients.map(function (ingredient, idx) {
-	          return React.createElement(
-	            'li',
-	            { key: idx },
-	            ingredient
-	          );
-	        })
-	      ),
-	      React.createElement(
-	        'ol',
-	        null,
-	        this.state.currentRecipe.steps.map(function (step, idx) {
-	          return React.createElement(
-	            'li',
-	            { key: idx },
-	            step
-	          );
-	        })
+	        'div',
+	        { className: 'ingredientsAndStepsContainer' },
+	        React.createElement(
+	          'div',
+	          { className: 'labels' },
+	          'Ingredients:'
+	        ),
+	        React.createElement(
+	          'ol',
+	          null,
+	          this.state.currentRecipe.ingredients.map(function (ingredient, idx) {
+	            return React.createElement(
+	              'li',
+	              { key: idx },
+	              ingredient
+	            );
+	          })
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'labels' },
+	          'Steps:'
+	        ),
+	        React.createElement(
+	          'ol',
+	          null,
+	          this.state.currentRecipe.steps.map(function (step, idx) {
+	            return React.createElement(
+	              'li',
+	              { key: idx },
+	              step
+	            );
+	          })
+	        )
 	      )
 	    );
 	  }

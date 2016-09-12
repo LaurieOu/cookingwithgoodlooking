@@ -22,16 +22,14 @@ const Recipes = React.createClass({
     const that = this;
 
     return (
-        <div>
-          <ul>
+        <div className="allRecipesContainer">
+          <ol>
             {Object.keys(this.state.recipes).map(function(recipeId) {
               return (
-                <Link to={'/recipes/' + recipeId} key={recipeId}>
-                    <p>{that.state.recipes[recipeId].name}</p>
-                </Link>
+                <li><Link to={'/recipes/' + recipeId} key={recipeId}>{that.state.recipes[recipeId].name}</Link></li>
               )
             })}
-          </ul>
+          </ol>
         </div>
     )
   }
