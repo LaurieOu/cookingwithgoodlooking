@@ -37,7 +37,7 @@
   font-size: 40px;
   text-shadow: 4px 4px 4px #aaa;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 35px;
   padding-bottom: 10px;
 }
 
@@ -88,4 +88,15 @@ ul li {
 .picture {
   display: flex;
   justify-content: center;
+}
+
+.homeLinkText {
+  position: absolute;
+  text-shadow: 2px 2px 2px #aaa;
+  top: 10px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  right: 35px;
+  font-size: 16px;
+  text-decoration: underline;
 }

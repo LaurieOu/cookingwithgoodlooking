@@ -55,7 +55,7 @@
 	var browserHistory = __webpack_require__(172).browserHistory;
 	var HomePage = __webpack_require__(235);
 	var RecipeIndex = __webpack_require__(236);
-	var RecipeShow = __webpack_require__(260);
+	var RecipeShow = __webpack_require__(259);
 	
 	var routes = React.createElement(
 	  Router,
@@ -27098,20 +27098,28 @@
 /* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+	
+	var _reactRouter = __webpack_require__(172);
 	
 	var React = __webpack_require__(1);
 	
+	
 	var HomePage = React.createClass({
-	  displayName: "HomePage",
+	  displayName: 'HomePage',
 	  render: function render() {
 	    return React.createElement(
-	      "div",
-	      { className: "mainBody" },
+	      'div',
+	      { className: 'mainBody' },
 	      React.createElement(
-	        "div",
-	        { className: "homePageTitle" },
-	        "Recipes under 30 minutes"
+	        _reactRouter.Link,
+	        { className: 'homeLinkText', to: '/' },
+	        'Home'
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'homePageTitle' },
+	        'Recipes under 30 minutes'
 	      ),
 	      this.props.children
 	    );
@@ -33929,8 +33937,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 259 */,
-/* 260 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

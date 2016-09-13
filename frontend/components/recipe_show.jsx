@@ -2,6 +2,7 @@ const React = require('react');
 const RecipeStore = require('../stores/recipes.js');
 
 
+
 const RecipeShow = React.createClass({
   getInitialState: function() {
     return {currentRecipe: RecipeStore.find(parseInt(this.props.params.id))}
@@ -9,6 +10,7 @@ const RecipeShow = React.createClass({
   render: function(){
     return (
       <div className="recipeShowContainer">
+
         <li className="recipeHeader">{this.state.currentRecipe.name}</li>
         <li className="recipeHeader">{this.state.currentRecipe.time}</li>
 
